@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
+      content-type: text/html
+      mode: HTML5
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/xigua           # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: 123                            # 数据库连接密码
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 5                                   # 数据库连接池的最小维持连接数
+      initial-size: 5                               # 初始化提供的连接数
+      max-total: 5                                  # 最大的连接数
+      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/urlMapper.xml
+shortUrl:                                           #自定义短网址配置属性
+  code: UTF-8                                       #短网址编码 建议UTF-8；其他如有乱码属正常现象
+  length: 6                                         #短网址自定义长度 整数且大于0 建议大于5
+  context: abcdefghijklmnopqrstuvwxyz0123456789     #短网址组成字符 建议越多越好 不容易重复 不建议使用编码不支持字符 容易乱码

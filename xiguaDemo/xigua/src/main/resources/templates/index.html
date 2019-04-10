@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/getShortURL"  method="post">
+    <p>长网址url : <input type="text" name="url" /></p>
+    <p>自定义短连接key: <input type="text" name="shorturl" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<form action="/goUrl" method="post">
+    <p>短网址key : <input type="text" name="shorturl" /></p>
+    <p><input type="submit" value="Submit" />
+</form>
+<table border="1">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>长网址</td>
+            <td>短网址</td>
+            <td>访问次数</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="info : ${infos}">
+            <td th:text="${info.id}"></td>
+            <td th:text="${info.longUrl}"></td>
+            <td th:text="${info.shortUrl}"></td>
+            <td th:text="${info.times}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

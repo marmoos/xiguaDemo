@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xigua.dao.urlDao">
+    <resultMap id="urlMap" type="com.xigua.vo.urlVo">
+        <id column="id" property="id"></id>
+        <result column="longUrl" property="longUrl"></result>
+        <result column="shortUrl" property="shortUrl"></result>
+        <result column="times" property="times"></result>
+    </resultMap>
+    <insert id="insertUrl" parameterType="com.xigua.vo.urlVo">
+    insert into test(longUrl,shortUrl,times) values (#{longUrl},#{shortUrl},#{times})
+</insert>
+    <update id="update" parameterType="com.xigua.vo.urlVo">
+update test set longUrl=#{longUrl},shortUrl=#{shortUrl},times=#{times} where id=#{id}
+</update>
+    <select id="queryByshortUrl" parameterType="java.lang.String" resultMap="urlMap">
+    select  * from test where shortUrl=#{shortUrl}
+</select>
+    <select id="queryBylongUrl" parameterType="java.lang.String" resultMap="urlMap">
+    select  * from test where longUrl=#{longUrl}
+</select>
+    <select id="queryAll" resultType="com.xigua.vo.urlVo">
+    select  * from test
+</select>
+</mapper>
